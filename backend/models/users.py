@@ -4,7 +4,6 @@ from sqlalchemy.sql.functions import func
 from app import db
 
 
-
 class Role(db.Model):
     """Role table in the database"""
 
@@ -47,7 +46,8 @@ class User(db.Model):
         return bcrypt.check_password_hash(self.hashed_password, plaintext)
 
     def is_last_admin(self):
-        count = User.query.filter_by(role_id=User.ROLE_ADMIN, delete_date=None).count()
+        count = User.query.filter_by(role_id=User.ROLE_ADMIN,
+                                     delete_date=None).count()
         if count > 1:
             return False
         return True

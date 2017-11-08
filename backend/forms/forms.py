@@ -27,7 +27,7 @@ class UniqueValue(object):
         self.property_to_find = property_to_find
 
     def __call__(self, form, field):
-        
+
         record_id = None
         if form.id.data:
             record_id = form.id.data
@@ -38,14 +38,6 @@ class UniqueValue(object):
 
         if query:
             raise ValidationError(self.message)
-
-check_email = UniqueValue(
-    User, User.email,
-    message="This email is already exists in database.")
-
-check_alias = UniqueValue(
-    User, User.alias,
-    message="This alias is already exists in database.")
 
 
 class UserForm(FlaskForm):
@@ -98,3 +90,12 @@ class LoginForm(FlaskForm):
     email = StringField('login', validators=[Email()])
     password = PasswordField('password', validators=[DataRequired()])
     submit_button = SubmitField('Login')
+
+
+check_email = UniqueValue(
+    User, User.email,
+    message="This email is already exists in database.")
+
+check_alias = UniqueValue(
+    User, User.alias,
+    message="This alias is already exists in database.")

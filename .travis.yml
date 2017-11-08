@@ -9,7 +9,7 @@ install:
 jobs:
   include:
     - stage: PEP8
-      script: pycodestyle backend
+      script: pycodestyle --ignore=E402 backend
 
     - stage: Pylint
       script: pylint backend

@@ -16,7 +16,7 @@ def admin_permissions(func):
     """Decorator to check admin rights to access some route."""
     @wraps(func)
     def wrapper(*args, **kwargs):
-        if not 'user_id' in session or session['role_id'] != ROLE_ADMIN:
+        if 'user_id' not in session or session['role_id'] != ROLE_ADMIN:
             flash("Don't have access")
             return redirect(url_for('login'))
         return func(*args, **kwargs)
