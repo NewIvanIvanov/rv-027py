@@ -15,5 +15,5 @@ jobs:
       script: pylint backend
 
 notifications:
-  slack: https://rv-027py.slack.com/messages/D7DHT78RM/team/U7DHT6YNT/
+  slack: rv-027py:Xjr17934IAWXxYbexLUuOl89
   email: false
