@@ -5,6 +5,15 @@ install:
   - pip install -r requirements.txt
   - pip install pycodestyle
   - pip install pylint
-script:
-  - pycodestyle backend
-  - pylint backend
+
+jobs:
+  include:
+    - stage: PEP8
+      script: pycodestyle backend
+
+    - stage: Pylint
+      script: pylint backend
+
+notifications:
+  slack: https://rv-027py.slack.com/messages/D7DHT78RM/team/U7DHT6YNT/
+  email: false
